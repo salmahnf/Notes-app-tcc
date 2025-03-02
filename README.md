@@ -1,6 +1,6 @@
 🚀 Merupakan Website Catatan Digital yang dikembangkan dengan menerapkan konsep RESTful API menggunakan Express.js sebagai backend dan React.js sebagai frontend. Aplikasi ini mampu menjalankan fungsi CRUD (Create, Read, Update, Delete) dengan baik, memungkinkan pengguna untuk menambahkan, mengedit, dan menghapus catatan secara digital.
 
-![Nama Gambar](frontend/src/assets/tampilan.png)
+<img src="frontend/src/assets/tampilan.png" alt="Tampilan Aplikasi" width="500">
 
 ## 📌 Instalasi & Menjalankan Proyek
 Clone Repository
