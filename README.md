@@ -38,3 +38,8 @@ git clone https://github.com/salmahnf/Notes-app-tcc.git
       ```sh
    npm run dev
    ```
+## 🏆 Fitur
+✅ Menambahkan catatan baru
+✅ Mengedit catatan yang sudah ada
+✅ Menghapus catatan yang tidak diperlukan
+✅ Tampilan UI yang simpel dan mudah digunakan
