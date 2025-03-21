@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+import { API_URL } from "../utils"; 
 
 // Ambil semua catatan dari backend
 export const getNotes = async () => {
