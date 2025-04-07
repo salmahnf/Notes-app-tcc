@@ -1,4 +1,4 @@
-import { API_URL } from "../utils"; 
+import { API_URL } from "../utils";
 
 // Ambil semua catatan dari backend
 export const getNotes = async () => {
