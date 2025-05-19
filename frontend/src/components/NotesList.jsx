@@ -1,3 +1,4 @@
+import React from "react";
 import NoteCard from "./NoteCard";
 import styled from "styled-components";
 
@@ -19,27 +20,30 @@ const Title = styled.h2`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 15px;
-  background:  #0d1b2a;
+  background: #0d1b2a;
 `;
-
 
 const NotesList = ({ notes, onUpdate, onDelete }) => {
   return (
     <>
-    <Title>📖 All Notes 📖</Title>
-    <ListContainer>
-      {notes.map((note) => (
-        <NoteCard
-          key={note.id}
-          id={note.id}
-          title={note.title}
-          notes={note.notes}
-          updated_at={note.updated_at}
-          onUpdate={onUpdate}
-          onDelete={onDelete}
-        />
-      ))}
-    </ListContainer>
+      <Title>📖 All Notes 📖</Title>
+      <ListContainer>
+        {notes.length > 0 ? (
+          notes.map((note) => (
+            <NoteCard
+              key={note.id}
+              id={note.id}
+              title={note.title}
+              notes={note.notes}
+              updated_at={note.updated_at}
+              onUpdate={onUpdate}
+              onDelete={onDelete}
+            />
+          ))
+        ) : (
+          <div style={{ color: "white" }}>No notes found. Create a new note!</div>
+        )}
+      </ListContainer>
     </>
   );
 };

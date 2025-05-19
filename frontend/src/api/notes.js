@@ -1,51 +1,69 @@
+import axios from "./axiosInstance";
+import Cookies from "js-cookie";
 import { API_URL } from "../utils";
 
-// Ambil semua catatan dari backend
+// Ambil semua catatan dari backend dengan autentikasi
 export const getNotes = async () => {
-  const response = await fetch(`${API_URL}/notes`); // Ambil data dari /notes
-  if (!response.ok) {
-    throw new Error("Failed to fetch notes");
+  const uId = Cookies.get("uId"); // Ambil user ID dari cookie
+  if (!uId) {
+    console.error("user ID tidak ditemukan dalam cookie");
+    return [];
   }
-  return response.json();
+
+  try {
+    const response = await axios.get(`${API_URL}/notes`, {
+      params: { uId },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    return [];
+  }
 };
 
-// Tambah catatan baru
+// Tambah catatan baru dengan autentikasi
 export const addNote = async (title, content) => {
-  const response = await fetch(`${API_URL}/tambahNotes`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title, notes: content }),
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to add note");
+  const uId = Cookies.get("uId"); // Ambil user ID dari cookie
+  if (!uId) {
+    console.error("user ID tidak ditemukan dalam cookie");
+    return null;
   }
 
-  return response.json(); // API mengembalikan catatan yang baru dibuat
+  try {
+    const response = await axios.post(`${API_URL}/tambahNotes`, {
+      uId,
+      title,
+      notes: content,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error adding note:", error);
+    return null;
+  }
 };
 
-// Update status catatan (ubah selesai atau belum selesai)
+// Update catatan dengan autentikasi
 export const updateNoteContent = async (id, title, content) => {
-  const response = await fetch(`${API_URL}/edit-notes/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title, notes: content }),
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to update note content");
+  try {
+    const response = await axios.put(`${API_URL}/edit-notes/${id}`, {
+      title,
+      notes: content,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating note:", error);
+    return null;
   }
-
-  return response.json();
 };
 
-// Hapus catatan berdasarkan ID
+// Hapus catatan dengan autentikasi
 export const deleteNote = async (id) => {
-  const response = await fetch(`${API_URL}/delete-notes/${id}`, {
-    method: "DELETE",
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to delete note");
+  try {
+    const response = await axios.delete(`${API_URL}/delete-notes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting note:", error);
+    return null;
   }
 };

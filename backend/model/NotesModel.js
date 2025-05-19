@@ -4,6 +4,10 @@ import db from "../config/Database.js";
 const Note = db.define(
   "notes",
   {
+    uId: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
     title: {
       type: Sequelize.STRING,
       allowNull: true,
@@ -19,7 +23,3 @@ const Note = db.define(
 );
 
 export default Note;
-
-(async () => {
-  await db.sync();
-})();

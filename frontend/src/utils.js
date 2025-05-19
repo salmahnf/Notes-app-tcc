@@ -1,1 +1,1 @@
-export const API_URL = "https://t6-be-salma-363721261053.us-central1.run.app";
+export const API_URL = "http://localhost:5000";

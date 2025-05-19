@@ -18,7 +18,7 @@ const NoteForm = ({ onAdd }) => {
     setMessage("");
 
     try {
-      onAdd(title, note); // Langsung update state tanpa fetch ulang
+      await onAdd(title, note);
       setMessage("Note created successfully!");
       setTitle("");
       setNote("");
@@ -60,19 +60,13 @@ const Container = styled.div`
   padding: 20px;
   background-color: #0d1b2a;
   color: #e0e1dd;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 50vh;
   margin-top: 30px;
 `;
 
 const Title = styled.h2`
   font-size: 24px;
-`;
-
-const CharCount = styled.span`
-  font-size: 14px;
-  align-self: flex-end;
-  margin-right: 15%;
 `;
 
 const Input = styled.input`
@@ -125,11 +119,6 @@ const Message = styled.p`
   margin-top: 10px;
   font-size: 14px;
   color: ${(props) => (props.error ? "red" : "green")};
-`;
-
-const AllNotes = styled.h3`
-  margin-top: 20px;
-  font-size: 18px;
 `;
 
 export default NoteForm;
