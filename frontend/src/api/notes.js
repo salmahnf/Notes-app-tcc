@@ -1,6 +1,6 @@
-import axios from "./axiosInstance";
+import axios from "./axiosInstance.js";
 import Cookies from "js-cookie";
-import { API_URL } from "../utils";
+import { API_URL } from "../utils.js";
 
 // Ambil semua catatan dari backend dengan autentikasi
 export const getNotes = async () => {

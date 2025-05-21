@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { API_URL } from "../utils";
+import { API_URL } from "../utils.js";
 import styled from "styled-components";
 
 const Container = styled.div`
