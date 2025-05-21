@@ -31,6 +31,11 @@ export const AuthProvider = ({ children }) => {
         expires: 5,
       });
 
+      Cookies.set("uId", res.data.uId, {
+        secure: false,
+        sameSite: "None",
+      });
+
       return true;
     } catch (err) {
       console.error("Login failed:", err);
