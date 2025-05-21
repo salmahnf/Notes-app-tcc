@@ -1,4 +1,5 @@
 import Note from "../model/NotesModel.js";
+import Cookies from "js-cookie";
 
 export const getNotes = async (req, res) => {
   try {
