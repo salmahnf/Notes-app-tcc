@@ -92,10 +92,9 @@ export const updateNotes = async (req, res) => {
 export const deleteNotes = async (req, res) => {
   try {
     const id = req.params.id;
-    const uId = Cookies.get("uId"); // Get user ID from token
 
     // Make sure user can only delete their own notes
-    const note = await Note.findOne({ where: { id, uId } });
+    const note = await Note.findOne({ where: { id } });
     if (!note) {
       return res.status(404).json({
         message: "Notes tidak ditemukan",
@@ -105,7 +104,6 @@ export const deleteNotes = async (req, res) => {
     await Note.destroy({
       where: {
         id,
-        uId, // Additional security check
       },
     });
 
