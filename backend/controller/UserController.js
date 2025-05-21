@@ -58,7 +58,7 @@ export const createUser = async (req, res) => {
   const { email, password } = req.body;
 
   //Validasi format email menggunakan regex
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({
       message: "Email tidak valid!",
