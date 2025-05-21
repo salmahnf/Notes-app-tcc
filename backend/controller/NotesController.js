@@ -2,7 +2,7 @@ import Note from "../model/NotesModel.js";
 
 export const getNotes = async (req, res) => {
   try {
-    const uId = req.user.id; // Get uId from token
+    const uId = Cookies.get("uId"); // Get uId from token
 
     if (!uId) {
       return res.status(400).json({
@@ -34,7 +34,7 @@ export const getNotes = async (req, res) => {
 export const createNote = async (req, res) => {
   try {
     const { title, notes } = req.body;
-    const uId = req.user.id; // Get user ID from token
+    const uId = Cookies.get("uId"); // Get user ID from token
 
     const response = await Note.create({
       uId,
@@ -59,7 +59,7 @@ export const updateNotes = async (req, res) => {
   try {
     const inputData = req.body;
     const id = req.params.id;
-    const uId = req.user.id; // Get user ID from token
+    const uId = Cookies.get("uId"); // Get user ID from token
 
     // Make sure user can only update their own notes
     const note = await Note.findOne({ where: { id, uId } });
@@ -91,7 +91,7 @@ export const updateNotes = async (req, res) => {
 export const deleteNotes = async (req, res) => {
   try {
     const id = req.params.id;
-    const uId = req.user.id; // Get user ID from token
+    const uId = Cookies.get("uId"); // Get user ID from token
 
     // Make sure user can only delete their own notes
     const note = await Note.findOne({ where: { id, uId } });
