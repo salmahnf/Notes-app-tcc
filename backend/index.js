@@ -9,9 +9,12 @@ const port = process.env.PORT || 5000;
 
 // CORS Options Configuration
 const corsOptions = {
-  origin: ['http://localhost:5173'],  
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: [
+    "http://localhost:5173",
+    "https://t6-fe-salma-dot-a-09-450915.uc.r.appspot.com",
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true, // Allow credentials (cookies)
 };
 
