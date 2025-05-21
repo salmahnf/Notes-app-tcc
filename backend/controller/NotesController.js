@@ -43,13 +43,13 @@ export const createNote = async (req, res) => {
     });
 
     res.status(201).json({
-      msg: "Note berhasil ditambah",
+      msg: "Notes berhasil ditambah",
       data: response,
     });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({
-      message: "Gagal menambah note",
+      message: "Gagal menambah notes",
       error: error.message,
     });
   }
@@ -65,7 +65,7 @@ export const updateNotes = async (req, res) => {
     const note = await Note.findOne({ where: { id, uId } });
     if (!note) {
       return res.status(404).json({
-        message: "Note tidak ditemukan",
+        message: "Notes tidak ditemukan",
       });
     }
 
@@ -97,7 +97,7 @@ export const deleteNotes = async (req, res) => {
     const note = await Note.findOne({ where: { id, uId } });
     if (!note) {
       return res.status(404).json({
-        message: "Note tidak ditemukan",
+        message: "Notes tidak ditemukan",
       });
     }
 

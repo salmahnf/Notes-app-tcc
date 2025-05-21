@@ -12,7 +12,7 @@ Note.belongsTo(User, { foreignKey: "id" });
     console.log("berhasil terkoneksi!");
 
     await db.sync({ alter: true });
-    console.log("tabel man");
+    console.log("oke");
   } catch (err) {
     console.error("error", err);
   }
