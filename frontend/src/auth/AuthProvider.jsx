@@ -23,17 +23,18 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post(`${API_URL}/login`, { email, password });
       const token = res.data.accessToken;
+      const uid = res.data.uId;
       setAccessToken(token);
+
+      Cookies.set("uId", uid, {
+        secure: false,
+        sameSite: "None",
+      });
 
       Cookies.set("refreshToken", res.data.refreshToken, {
         secure: false,
         sameSite: "None",
         expires: 5,
-      });
-
-      Cookies.set("uId", res.data.uId, {
-        secure: false,
-        sameSite: "None",
       });
 
       return true;
