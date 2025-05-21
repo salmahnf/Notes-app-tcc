@@ -31,13 +31,13 @@ export const login = async (req, res) => {
     );
     res.cookie("refreshToken", generateToken, {
       maxAge: 24 * 60 * 60 * 1000, // 1 day
-      httpOnly: false,
+      httpOnly: true,
       sameSite: "none",
       secure: true,
     });
     res.cookie("uId", user.id, {
       maxAge: 24 * 60 * 60 * 1000, // 1 day
-      httpOnly: false,
+      httpOnly: true,
       sameSite: "none",
       secure: true,
     });
