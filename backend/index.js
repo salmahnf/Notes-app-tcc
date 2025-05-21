@@ -5,7 +5,7 @@ import Route from "./routes/Routes.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 // CORS Options Configuration
 const corsOptions = {
