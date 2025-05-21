@@ -57,13 +57,13 @@ export const login = async (req, res) => {
 export const createUser = async (req, res) => {
   const { email, password } = req.body;
 
-  // Email validation regex
-  // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  // if (!emailRegex.test(email)) {
-  //   return res.status(400).json({
-  //     message: "Email tidak valid!",
-  //   });
-  // }
+  //Validasi format email menggunakan regex
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      message: "Email tidak valid!",
+    });
+  }
 
   const passEncrypt = await bcrypt.hash(password, 5);
   try {
