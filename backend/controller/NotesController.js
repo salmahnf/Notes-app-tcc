@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 export const getNotes = async (req, res) => {
   try {
-    const uId = req.user.id; // Get uId from token
+    const uId = req.user.id;
 
     if (!uId) {
       return res.status(400).json({
@@ -60,7 +60,7 @@ export const updateNotes = async (req, res) => {
   try {
     const inputData = req.body;
     const id = req.params.id;
-    const uId = req.user.id;// Get user ID from token
+    const uId = req.user.id; // Get user ID from token
 
     // Make sure user can only update their own notes
     const note = await Note.findOne({ where: { id, uId } });

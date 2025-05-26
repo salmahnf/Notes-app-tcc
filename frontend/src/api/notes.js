@@ -4,15 +4,8 @@ import { API_URL } from "../utils.js";
 
 // Ambil semua catatan dari backend dengan autentikasi
 export const getNotes = async () => {
-  const uId = Cookies.get("uId"); // Ambil user ID dari cookie
-  if (!uId) {
-    console.error("user ID tidak ditemukan dalam cookie");
-    return [];
-  }
-
   try {
     const response = await axios.get(`${API_URL}/notes`, {
-      params: { uId },
       withCredentials: true,
     });
     return response.data;
@@ -24,15 +17,8 @@ export const getNotes = async () => {
 
 // Tambah catatan baru dengan autentikasi
 export const addNote = async (title, content) => {
-  const uId = Cookies.get("uId"); // Ambil user ID dari cookie
-  if (!uId) {
-    console.error("user ID tidak ditemukan dalam cookie");
-    return null;
-  }
-
   try {
     const response = await axios.post(`${API_URL}/tambahNotes`, {
-      uId,
       title,
       notes: content,
     });
