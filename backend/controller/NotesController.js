@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 export const getNotes = async (req, res) => {
   try {
-    const uId = req.user.uId;
+    const uId = req.user.id;
 
     if (!uId) {
       return res.status(400).json({
@@ -35,7 +35,7 @@ export const getNotes = async (req, res) => {
 export const createNote = async (req, res) => {
   try {
     const { title, notes } = req.body;
-    const uId = req.user.uId; // Get user ID from token
+    const uId = req.user.id; // Get user ID from token
 
     const response = await Note.create({
       uId,
